@@ -1,7 +1,6 @@
 const eventHandling = require("./eventhandling");
 const util = require("./util");
 const config = require("./config");
-const Types = require("./types");
 
 /**
  * Provides a high-level interface to access data below a given root path.
@@ -45,8 +44,6 @@ var BaseClient = function(storage, base) {
   this.on = this.on.bind(this);
   storage.onChange(this.base, this._fireChange.bind(this));
 };
-
-BaseClient.Types = Types;
 
 BaseClient.prototype = {
   /**
@@ -248,8 +245,6 @@ BaseClient.prototype = {
   /**
    * Store object at given path. Triggers synchronization.
    *
-   * See ``declareType()`` and :doc:`data types </data-modules/defining-data-types>`
-   * for an explanation of types
    *
    * @param {string} path   - Path relative to the module root.
    * @param {object} object - A JavaScript object to be stored at the given
